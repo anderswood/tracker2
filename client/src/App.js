@@ -3,6 +3,20 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount () {
+    fetch('/api/weather', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        lat: 40.016457,
+        long: -105.285884
+      })
+    })
+    .then(jsonWeather => jsonWeather.json())
+    .then(res => console.log(res))
+  }
+
   render() {
     return (
       <div className="App">
