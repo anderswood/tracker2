@@ -13,21 +13,23 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-app.post('/api/weather', (req, res) => {
-  const { lat, long } = req.body;
-  const DSkey = process.env.key;
-
-  fetch(`https://api.darksky.net/forecast/${DSkey}/${lat},${long}`)
-  .then(response => {
-    if(response.status === 200) {
-      return response.json();
-    } else {
-      res.json({error: 'error fetching weather'});
-    }
-  })
-  .then(weather => res.send(weather))
-  .catch(err => console.log(err))
-});
+// app.post('/api/weather', (req, res) => {
+//   // const { lat, long } = req.body;
+//   const mapsKey = process.env.mapKey;
+//
+//   fetch(`https://maps.googleapis.com/maps/api/js?key=${mapsKey}&libraries=drawing`)
+//   .then(response => {
+//     console.log(response.status);
+//     if(response.status === 200) {
+//       // console.log(response)
+//       return response.json();
+//     } else {
+//       res.json({error: 'error fetching weather'});
+//     }
+//   })
+//   .then(weather => res.send(weather))
+//   .catch(err => console.log(err))
+// });
 
 // app.post('/api/coords', (req, res) => {
 //   const address = req.body.address;
