@@ -7,14 +7,14 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
 import { rootReducer } from './reducers/index';
-import AppContainer from './containers/AppContainer';
+import App from './App';
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(rootReducer, devTools);
 
 ReactDOM.render(
   <Provider store={ store }>
-    <AppContainer />
+    <App />
   </Provider>,
   document.getElementById('root'));
   registerServiceWorker();

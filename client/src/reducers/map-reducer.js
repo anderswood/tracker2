@@ -5,7 +5,7 @@ export const mapState = (state = [], action) => {
   switch (action.type) {
 
     case 'ADD_MAP':
-      return [...state, action.map]
+      return [action.map]
 
     case 'ADD_POLYLINE':
       const pathCoords = [
@@ -15,8 +15,13 @@ export const mapState = (state = [], action) => {
         {lat: 40.311865139853445, lng: -105.71903228759766}
       ]
       let overlay = new google.maps.Polyline(polylineParams(pathCoords))
-      console.log(overlay);
       overlay.setMap(state[0]);
+      return state;
+
+    case 'ADD_OVERLAY':
+      return state;
+
+    case 'REMOVE_OVERLAY':
       return state;
 
     default:
