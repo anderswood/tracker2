@@ -3,15 +3,17 @@ export const overlays = (state = {selectedOverlay: {}, displayedOverlays:[]}, ac
 
   switch (action.type) {
     case 'UPDATE_OVERLAYS':
-      let filteredOverlays = state.displayedOverlays.filter( overlay => {
+      let updatedState = {};
+      let allDisplayedOverlays = Object.assign([],state.displayedOverlays);
+      let filteredOverlays = allDisplayedOverlays.filter( overlay => {
         return overlay.overlayID !== action.newOverlay.overlayID;
       })
 
       filteredOverlays.push(action.newOverlay);
-      state.displayedOverlays = filteredOverlays;
-      state.selectedOverlay = action.newOverlay;
-      return { ...state }
-      
+      updatedState.displayedOverlays = filteredOverlays;
+      updatedState.selectedOverlay = action.newOverlay;
+      return { ...updatedState };
+
       //
       // case 'CLEAR_SELECTED_OVERLAY':
       //   return []

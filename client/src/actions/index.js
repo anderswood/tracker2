@@ -17,3 +17,10 @@ export const UpdateOverlays = (newOverlay) => {
     newOverlay
   }
 }
+
+export const addTour = (tour) => {
+  return {
+    type: 'ADD_TOUR',
+    tour
+  }
+}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import ResetBtn from './ResetBtn';
+import SaveTourBtnContainer from './containers/SaveTourBtnContainer';
+
 class NewTour extends Component {
   constructor (props) {
     super(props)
@@ -15,10 +18,24 @@ class NewTour extends Component {
     this.setState({[title]: e.target.value})
   }
 
+  clearState () {
+    this.setState({
+      name: '',
+      lastVisited: '',
+      agency: '',
+      description: ''
+    })
+  }
+
   render () {
     return (
       <section className='new-tour-container'>
         <h2>New Tour</h2>
+        <ResetBtn handleClearState={ this.clearState.bind(this) }
+                  handleResetMap={ this.props.handleResetMap }/>
+        <SaveTourBtnContainer handleClearState={ this.clearState.bind(this) }
+                              handleResetMap={ this.props.handleResetMap }
+                              tourInfo={ this.state }/>
         <form className='tour-form'>
           <section className='tour-name-section'>
             <label htmlFor='tour-name'><h3>Tour Name:</h3></label>

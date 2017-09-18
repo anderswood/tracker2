@@ -4,8 +4,6 @@ import './App.css';
 // import { polygonParams, polylineParams, drawingMgrProps, initMapOptions } from './mapProps';
 // import MapMess from './MapMess';
 import MapTileContainer from './containers/MapTileContainer';
-import NewTour from './NewTour';
-import TourListContainer from './containers/TourListContainer';
 
 class App extends Component {
   constructor (props) {
@@ -30,8 +28,6 @@ class App extends Component {
     return (
       <div className="App">
         <MapTileContainer />
-        <NewTour />
-        <TourListContainer />
         {/* <button onClick={ () => this.handleClicky() }>Add Map</button>
         <button onClick={ () => this.handleAdd() }>Add Polyline</button> */}
         {/* <MapMess mapInfo={ this.state.myMap } /> */}
