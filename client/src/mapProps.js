@@ -31,9 +31,8 @@ export const drawingMgrProps = () => {
     drawingControl: true,
     drawingControlOptions: {
       position: google.maps.ControlPosition.TOP_CENTER,
-      drawingModes: ['marker', 'polygon', 'polyline']
+      drawingModes: ['polygon', 'polyline']
     },
-    markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
     polygonOptions: {
       draggable: true,
       editable: true,

@@ -14,7 +14,7 @@ class MapTile extends Component {
     drawingManager.setMap(mapTile);
     // this.props.handleAddMap(mapTile);
     this.addDrawModeChanged(drawingManager);
-    this.addOverlayComplete(drawingManager);
+    this.addOverlayListeners(drawingManager);
   }
 
   addDrawModeChanged (drawingManager) {
@@ -26,11 +26,11 @@ class MapTile extends Component {
     })
   }
 
-  addOverlayComplete (drawingManager) {
+  addOverlayListeners (drawingManager) {
     google.maps.event.addListener(drawingManager, 'overlaycomplete', (completeEvent) => {
       drawingManager.setDrawingMode(null);
       completeEvent.overlay.id = Date.now();
-      let newOverlay = createOverlay(completeEvent)
+      let newOverlay = createOverlay(completeEvent);
 
       this.props.handleUpdateOverlays(newOverlay);
 
@@ -38,19 +38,19 @@ class MapTile extends Component {
         let newOverlay = createOverlay(completeEvent);
 
         this.props.handleUpdateOverlays(newOverlay);
-      })
+      });
 
       google.maps.event.addListener(completeEvent.overlay.getPath(), 'set_at', () => {
         let newOverlay = createOverlay(completeEvent);
 
         this.props.handleUpdateOverlays(newOverlay);
-      })
+      });
 
       google.maps.event.addListener(completeEvent.overlay, 'click', ()=> {
         let newOverlay = createOverlay(completeEvent);
 
         this.props.handleUpdateOverlays(newOverlay);
-      })
+      });
     });
   }
 
