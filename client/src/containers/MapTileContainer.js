@@ -7,7 +7,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleAddMap: (map) => {
       dispatch(actions.addMap(map))
-    }
+    },
+    handleAddSelectedOverlay: (overlay) => {
+      dispatch(actions.addSelectedOverlay(overlay))
+    },
+    handleAddDisplayedOverlay: (overlay) => {
+      dispatch(actions.addSelectedOverlay(overlay))
+    },
   }
 }
 

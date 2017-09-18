@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   handleAdd () {
-    this.props.handleAddPolyline();
+    // this.props.handleAddPolyline();
   }
 
   render() {
