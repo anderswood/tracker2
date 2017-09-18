@@ -8,11 +8,8 @@ const mapDispatchToProps = (dispatch) => {
     handleAddMap: (map) => {
       dispatch(actions.addMap(map))
     },
-    handleAddSelectedOverlay: (overlay) => {
-      dispatch(actions.addSelectedOverlay(overlay))
-    },
-    handleAddDisplayedOverlay: (overlay) => {
-      dispatch(actions.addSelectedOverlay(overlay))
+    handleUpdateOverlays: (overlay) => {
+      dispatch(actions.UpdateOverlays(overlay))
     },
   }
 }

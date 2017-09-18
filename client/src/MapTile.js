@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 
 import { drawingMgrProps, initMapOptions } from './mapProps';
+import { createOverlay } from './helper';
 
 class MapTile extends Component {
 
@@ -11,7 +12,7 @@ class MapTile extends Component {
     let drawingManager = new google.maps.drawing.DrawingManager(drawingMgrProps());
 
     drawingManager.setMap(mapTile);
-    this.props.handleAddMap(mapTile);
+    // this.props.handleAddMap(mapTile);
     this.addDrawModeChanged(drawingManager);
     this.addOverlayComplete(drawingManager);
   }
@@ -27,17 +28,29 @@ class MapTile extends Component {
 
   addOverlayComplete (drawingManager) {
     google.maps.event.addListener(drawingManager, 'overlaycomplete', (completeEvent) => {
-      if (completeEvent.type === 'polygon' || completeEvent.type === 'polyline') {
-        drawingManager.setDrawingMode(null);
+      drawingManager.setDrawingMode(null);
+      completeEvent.overlay.id = Date.now();
+      let newOverlay = createOverlay(completeEvent)
 
-        // addClickListener(newOverlay);
-        // add to displayed overalys
-        // add to selected overlays-
-        this.props.handleAddSelectedOverlay(completeEvent);
-        this.props.handleAddDisplayedOverlay(completeEvent);
-        // this.retrieveOverlayCoordsFromMap(newOverlay);
-        // this.setSelectedShape(newOverlay)
-      }
+      this.props.handleUpdateOverlays(newOverlay);
+
+      google.maps.event.addListener(completeEvent.overlay.getPath(), 'insert_at', () => {
+        let newOverlay = createOverlay(completeEvent);
+
+        this.props.handleUpdateOverlays(newOverlay);
+      })
+
+      google.maps.event.addListener(completeEvent.overlay.getPath(), 'set_at', () => {
+        let newOverlay = createOverlay(completeEvent);
+
+        this.props.handleUpdateOverlays(newOverlay);
+      })
+
+      google.maps.event.addListener(completeEvent.overlay, 'click', ()=> {
+        let newOverlay = createOverlay(completeEvent);
+
+        this.props.handleUpdateOverlays(newOverlay);
+      })
     });
   }
 

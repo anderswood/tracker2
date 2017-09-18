@@ -11,16 +11,9 @@ export const addPolyline = () => {
   }
 }
 
-export const addSelectedOverlay = (completeEvent) => {
+export const UpdateOverlays = (newOverlay) => {
   return {
-    type: 'ADD_SELECTED_OVERLAY',
-    completeEvent
-  }
-}
-
-export const addDisplayedOverlay = (overlay) => {
-  return {
-    type: 'ADD_DISPLAYED_OVERLAY',
-    overlay
+    type: 'UPDATE_OVERLAYS',
+    newOverlay
   }
 }

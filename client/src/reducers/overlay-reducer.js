@@ -1,28 +1,21 @@
 
-export const overlays = (state = {}, action) => {
+export const overlays = (state = {selectedOverlay: {}, displayedOverlays:[]}, action) => {
 
   switch (action.type) {
-    case 'ADD_SELECTED_OVERLAY':
-      let rawOverlay = action.completeEvent.overlay;
-      let overlayCoords = rawOverlay.getPath().getArray().map((coordPair, i) => {
-        return {lat: coordPair.lat(), lng: coordPair.lng()}
-      });
+    case 'UPDATE_OVERLAYS':
+      let filteredOverlays = state.displayedOverlays.filter( overlay => {
+        return overlay.overlayID !== action.newOverlay.overlayID;
+      })
 
-      let selectedOverlay = {
-        overlayID: Date.now(),
-        overlayType: action.completeEvent.type,
-        overlayCoords: overlayCoords
-      }
-
-      return { selectedOverlay };
-
-    //
-    // case 'CLEAR_SELECTED_OVERLAY':
-    //   return []
-    //
-    case 'ADD_DISPLAYED_OVERLAY':
-      // state.displayedOverlays
-      return [...state, action.overlay]
+      filteredOverlays.push(action.newOverlay);
+      state.displayedOverlays = filteredOverlays;
+      state.selectedOverlay = action.newOverlay;
+      return { ...state }
+      
+      //
+      // case 'CLEAR_SELECTED_OVERLAY':
+      //   return []
+      //
     //
     // case 'CLEAR_DISPLAYED_OVERLAYS':
     //   return []
