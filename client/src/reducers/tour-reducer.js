@@ -1,14 +1,14 @@
 
-export const stashes = (state = [], action) => {
+export const tours = (state = [], action) => {
   switch (action.type) {
 
-    // case 'ADD_STASH':
+    // case 'ADD_TOUR':
     //   return []
     //
-    // case 'REMOVE_STASH':
+    // case 'REMOVE_TOUR':
     //   return []
     //
-    // case 'CLEAR_STASHES':
+    // case 'CLEAR_TOURS':
     //   return []
 
     default:

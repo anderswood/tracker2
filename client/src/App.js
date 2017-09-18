@@ -5,7 +5,7 @@ import './App.css';
 // import MapMess from './MapMess';
 import MapTileContainer from './containers/MapTileContainer';
 import NewTour from './NewTour';
-import TourList from './TourList';
+import TourListContainer from './containers/TourListContainer';
 
 class App extends Component {
   constructor (props) {
@@ -31,7 +31,7 @@ class App extends Component {
       <div className="App">
         <MapTileContainer />
         <NewTour />
-        <TourList />
+        <TourListContainer />
         {/* <button onClick={ () => this.handleClicky() }>Add Map</button>
         <button onClick={ () => this.handleAdd() }>Add Polyline</button> */}
         {/* <MapMess mapInfo={ this.state.myMap } /> */}
