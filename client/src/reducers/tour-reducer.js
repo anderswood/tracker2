@@ -4,8 +4,13 @@ export const tours = (state = [], action) => {
 
     case 'ADD_TOUR':
       let updatedTours = Object.assign([], state)
+      let tourObj = {
+        tourId: Date.now(),
+        overlays: action.overlays,
+        info: action.tourInfo
+      }
 
-      updatedTours.push(action.tour)
+      updatedTours.push(tourObj)
       return [ ...updatedTours ]
     //
     // case 'REMOVE_TOUR':

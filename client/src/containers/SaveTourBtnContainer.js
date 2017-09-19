@@ -5,8 +5,8 @@ import SaveTourBtn from '../SaveTourBtn';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSaveTour: (tour) => {
-      dispatch(actions.addTour(tour))
+    handleSaveTour: (tourInfo) => {
+      dispatch(actions.addTour(tourInfo))
     }
   }
 }

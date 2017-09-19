@@ -18,9 +18,16 @@ export const UpdateOverlays = (newOverlay) => {
   }
 }
 
-export const addTour = (tour) => {
-  return {
-    type: 'ADD_TOUR',
-    tour
+export const addTour = (tourInfo) => {
+  return (dispatch, getState) => {
+    const overlays = getState().overlays.displayedOverlays;
+
+    dispatch({
+      type: 'ADD_TOUR',
+      tourInfo,
+      overlays
+    });
   }
 }
+
+//get displayedOverlays from overlays state
