@@ -7,6 +7,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleSaveTour: (tourInfo) => {
       dispatch(actions.addTour(tourInfo))
+    },
+    handleClearOverlays: () => {
+      dispatch(actions.clearOverlays())
     }
   }
 }

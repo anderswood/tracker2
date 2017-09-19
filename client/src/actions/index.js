@@ -5,16 +5,16 @@ export const addMap = (map) => {
   }
 }
 
-export const addPolyline = () => {
-  return {
-    type: 'ADD_POLYLINE',
-  }
-}
-
 export const updateOverlays = (newOverlay) => {
   return {
     type: 'UPDATE_OVERLAYS',
     newOverlay
+  }
+}
+
+export const clearOverlays = () => {
+  return {
+    type: 'CLEAR_OVERLAYS'
   }
 }
 
@@ -30,8 +30,11 @@ export const addTour = (tourInfo) => {
   }
 }
 
-export const activateTour = () => {
-
+export const activateTour = (tourId) => {
+  return {
+    type: 'ACTIVATE_TOUR',
+    tourId
+  }
 }
 
 export const deactivateTour = () => {

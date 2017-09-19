@@ -14,22 +14,13 @@ export const overlays = (state = {selectedOverlay: {}, displayedOverlays:[]}, ac
       updatedState.selectedOverlay = action.newOverlay;
       return { ...updatedState };
 
-      //
-      // case 'CLEAR_SELECTED_OVERLAY':
-      //   return []
-      //
-    //
-    // case 'CLEAR_DISPLAYED_OVERLAYS':
-    //   return []
+    case 'CLEAR_OVERLAYS':
+      return {selectedOverlay: {}, displayedOverlays:[]}
+
     //
     // case 'REMOVE_DISPLAYED_OVERLAY':
     //   return [...state, action.overlay]
 
-    case 'ACTIVATE_TOUR':
-      return []
-
-    case 'DEACTIVATE_TOUR':
-      return []
 
     default:
       return state;

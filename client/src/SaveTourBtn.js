@@ -4,6 +4,7 @@ const SaveTourBtn = (props) => {
 
   const handleSave = () => {
     props.handleSaveTour(props.tourInfo)
+    props.handleClearOverlays()
     props.handleResetMap()
     props.handleClearState()
   }

@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 
-// import * as actions from '../actions/index';
+import * as actions from '../actions/index';
 import TourCard from '../TourCard';
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    // tourList: state.tours
+    handleActivateTour: (tourId) => {
+      dispatch(actions.activateTour(tourId))
+    }
   }
 }
 
-export default connect(mapStateToProps, null)(TourCard)
+export default connect(null, mapDispatchToProps)(TourCard)

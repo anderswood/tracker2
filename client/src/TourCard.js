@@ -4,7 +4,7 @@ import React from 'react';
 
 import { polygonParams, polylineParams } from './mapProps';
 
-const TourCard = ({tourData, handleResetMap}) => {
+const TourCard = ({tourData, handleResetMap, handleActivateTour}) => {
 
   const loadOverlays = (mapObj) => {
     tourData.overlays.forEach( path => {
@@ -29,6 +29,7 @@ const TourCard = ({tourData, handleResetMap}) => {
   const clickCard = () => {
     let mapObj = handleResetMap();
     loadOverlays(mapObj);
+    handleActivateTour(tourData.tourId);
   }
 
   return (
