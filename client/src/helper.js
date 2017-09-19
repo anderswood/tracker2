@@ -6,7 +6,7 @@ export const createOverlay = (completeEvent) => {
   });
 
   return {
-    overlayID: completeEvent.overlay.id || Date.now(),
+    overlayId: completeEvent.overlay.id || Date.now(),
     overlayType: completeEvent.type,
     overlayCoords: overlayCoords
   };

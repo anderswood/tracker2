@@ -6,7 +6,7 @@ export const overlays = (state = {selectedOverlay: {}, displayedOverlays:[]}, ac
       let updatedState = {};
       let allDisplayedOverlays = Object.assign([],state.displayedOverlays);
       let filteredOverlays = allDisplayedOverlays.filter( overlay => {
-        return overlay.overlayID !== action.newOverlay.overlayID;
+        return overlay.overlayId !== action.newOverlay.overlayId;
       })
 
       filteredOverlays.push(action.newOverlay);

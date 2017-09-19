@@ -3,7 +3,6 @@ import React from 'react';
 const SaveTourBtn = (props) => {
 
   const handleSave = () => {
-    console.log(props);
     props.handleSaveTour(props.tourInfo)
     props.handleResetMap()
     props.handleClearState()
