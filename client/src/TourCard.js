@@ -2,32 +2,37 @@
 
 import React from 'react';
 
-import { overlayParams } from './mapProps';
+import { polygonParams, polylineParams } from './mapProps';
 
-const TourCard = ({tourData}) => {
+const TourCard = ({mapObj, tourData}) => {
   // console.log('tourdata: ',tourData);
 
   const clickCard = () => {
-    const tourId = tourData.info.tourId;
+    // const tourId = tourData.info.tourId;
     //display card, load
     //execute resetMap()
     loadOverlays()
   }
 
   const loadOverlays = () => {
-    tourData.overlays.map( path => {
-      const overlayParameters = overlayParams(path.overlayCoords);
+    tourData.overlays.forEach( path => {
       let overlay;
 
-      path.overlayType === 'polygon' ?
-        overlay = new google.maps.Polygon(overlayParameters) :
-        overlay = new google.maps.Polyline(overlayParameters);
+      if (path.overlayType === 'polygon') {
+        const polygonParameters = polygonParams(path.overlayCoords);
+
+        overlay = new google.maps.Polygon(polygonParameters);
+      } else if (path.overlayType === 'polyline') {
+        const polylineParameters = polylineParams(path.overlayCoords);
+
+        overlay = new google.maps.Polyline(polylineParameters);
+      }
 
       overlay.id = path.overlayId;
       overlay.type = path.overlayType;
       console.log(overlay);
+      overlay.setMap(mapObj);
 
-      return overlay
     });
 
   }

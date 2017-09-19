@@ -12,7 +12,7 @@ class MapTile extends Component {
   constructor (props) {
     super(props)
     this.state ={
-
+      mapObj: ''
     }
   }
 
@@ -28,6 +28,7 @@ class MapTile extends Component {
     // this.props.handleAddMap(mapTile);
     this.addDrawModeChanged(drawingManager);
     this.addOverlayListeners(drawingManager);
+    this.setState({mapObj: mapTile});
   }
 
   addDrawModeChanged (drawingManager) {
@@ -72,7 +73,8 @@ class MapTile extends Component {
       <section className='canvas-container'>
         <div className='GMap-canvas' ref="mapCanvas"></div>
         <NewTour handleResetMap={ this.resetMap.bind(this) } />
-        <TourListContainer />
+        <TourListContainer  handleResetMap={ this.resetMap.bind(this) }
+                            mapObj={ this.state.mapObj }/>
         {/* <SubmitToursBtn /> */}
       </section>
     )

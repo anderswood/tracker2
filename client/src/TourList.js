@@ -2,14 +2,15 @@ import React from 'react';
 
 import TourCard from './TourCard';
 
-const TourList = (props) => {
+const TourList = ({ mapObj, tourList }) => {
   let tourListArr;
 
-  if (!props.tourList.length) {
+  if (!tourList.length) {
     tourListArr=<h3>No Tours Saved</h3>;
   } else {
-    tourListArr = props.tourList.map( (tour, i) => {
-      return <TourCard  tourData={ tour }
+    tourListArr = tourList.map( (tour, i) => {
+      return <TourCard  mapObj={ mapObj }
+                        tourData={ tour }
                         key={ i }/>
       });
   }
