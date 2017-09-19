@@ -11,7 +11,7 @@ export const addPolyline = () => {
   }
 }
 
-export const UpdateOverlays = (newOverlay) => {
+export const updateOverlays = (newOverlay) => {
   return {
     type: 'UPDATE_OVERLAYS',
     newOverlay
@@ -28,6 +28,14 @@ export const addTour = (tourInfo) => {
       overlays
     });
   }
+}
+
+export const activateTour = () => {
+
+}
+
+export const deactivateTour = () => {
+
 }
 
 //get displayedOverlays from overlays state

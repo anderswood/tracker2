@@ -25,6 +25,12 @@ export const overlays = (state = {selectedOverlay: {}, displayedOverlays:[]}, ac
     // case 'REMOVE_DISPLAYED_OVERLAY':
     //   return [...state, action.overlay]
 
+    case 'ACTIVATE_TOUR':
+      return []
+
+    case 'DEACTIVATE_TOUR':
+      return []
+
     default:
       return state;
   }

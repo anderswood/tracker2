@@ -11,8 +11,7 @@ import TourListContainer from './containers/TourListContainer';
 class MapTile extends Component {
   constructor (props) {
     super(props)
-    this.state ={
-      mapObj: ''
+    this.state = {
     }
   }
 
@@ -25,10 +24,10 @@ class MapTile extends Component {
     let drawingManager = new google.maps.drawing.DrawingManager(drawingMgrProps());
 
     drawingManager.setMap(mapTile);
-    // this.props.handleAddMap(mapTile);
     this.addDrawModeChanged(drawingManager);
     this.addOverlayListeners(drawingManager);
-    this.setState({mapObj: mapTile});
+
+    return mapTile;
   }
 
   addDrawModeChanged (drawingManager) {
@@ -73,8 +72,7 @@ class MapTile extends Component {
       <section className='canvas-container'>
         <div className='GMap-canvas' ref="mapCanvas"></div>
         <NewTour handleResetMap={ this.resetMap.bind(this) } />
-        <TourListContainer  handleResetMap={ this.resetMap.bind(this) }
-                            mapObj={ this.state.mapObj }/>
+        <TourListContainer  handleResetMap={ this.resetMap.bind(this) }/>
         {/* <SubmitToursBtn /> */}
       </section>
     )

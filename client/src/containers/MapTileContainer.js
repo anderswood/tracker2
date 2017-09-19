@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.addMap(map))
     },
     handleUpdateOverlays: (overlay) => {
-      dispatch(actions.UpdateOverlays(overlay))
+      dispatch(actions.updateOverlays(overlay))
     },
   }
 }
