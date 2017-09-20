@@ -4,7 +4,13 @@ import React from 'react';
 
 import { polygonParams, polylineParams } from './mapProps';
 
-const TourCard = ({tourData, handleResetMap, handleActivateTour}) => {
+const TourCard = ({
+  tourData,
+  handleResetMap,
+  handleActivateTour,
+  handleDeactivateTour,
+  tourList
+}) => {
 
   const loadOverlays = (mapObj) => {
     tourData.overlays.forEach( path => {
@@ -28,12 +34,22 @@ const TourCard = ({tourData, handleResetMap, handleActivateTour}) => {
 
   const clickCard = () => {
     let mapObj = handleResetMap();
-    loadOverlays(mapObj);
-    handleActivateTour(tourData.tourId);
+
+    if (tourList.activeTour !== tourData.tourId) {
+      handleActivateTour(tourData.tourId);
+      loadOverlays(mapObj);
+    } else {
+      handleDeactivateTour();
+    }
+  }
+
+  const getClass = () => {
+    return tourList.activeTour === tourData.tourId ? 'card active-card' : 'card';
   }
 
   return (
-    <div className='tour-card' onClick={ () => clickCard() }>
+    <div  className={ getClass() }
+          onClick={ () => clickCard() }>
       <h3>{ tourData.info.name }</h3>
       <h4>{ tourData.info.lastVisited }</h4>
     </div>

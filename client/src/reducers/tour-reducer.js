@@ -1,9 +1,11 @@
 
 export const tours = (state = {allTours: [], activeTour: ''}, action) => {
+  let updatedState = {};
+
   switch (action.type) {
 
     case 'ADD_TOUR':
-      let updatedState = Object.assign({}, state);
+      updatedState = Object.assign({}, state);
       let tourObj = {
         tourId: Date.now(),
         overlays: action.overlays,
@@ -20,13 +22,16 @@ export const tours = (state = {allTours: [], activeTour: ''}, action) => {
     //   return []
 
     case 'ACTIVATE_TOUR':
-      let updateState = Object.assign({}, state);
+      updatedState = Object.assign({}, state);
 
-      updateState.activeTour = action.tourId;
-      return { ...updateState }
+      updatedState.activeTour = action.tourId;
+      return { ...updatedState }
 
     case 'DEACTIVATE_TOUR':
-      return []
+      updatedState = Object.assign({}, state);
+
+      updatedState.activeTour = '';
+      return { ...updatedState }
 
     default:
       return state;

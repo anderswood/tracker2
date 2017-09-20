@@ -38,7 +38,7 @@ export const activateTour = (tourId) => {
 }
 
 export const deactivateTour = () => {
-
+  return {
+    type: 'DEACTIVATE_TOUR'
+  }
 }
-
-//get displayedOverlays from overlays state
