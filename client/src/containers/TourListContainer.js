@@ -4,7 +4,7 @@ import TourList from '../TourList';
 
 const mapStateToProps = (state) => {
   return {
-    tourList: state.tours
+    tours: state.tours
   }
 }
 

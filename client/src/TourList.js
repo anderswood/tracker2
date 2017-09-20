@@ -2,14 +2,14 @@ import React from 'react';
 
 import TourCardContainer from './containers/TourCardContainer';
 
-const TourList = ({ tourList, handleResetMap }) => {
-  const tours = tourList.allTours;
+const TourList = ({ tours, handleResetMap }) => {
+  const toursList = tours.allTours;
   let tourListArr;
 
-  if (!tours.length) {
+  if (!toursList.length) {
     tourListArr = <h3>No Tours Saved</h3>;
   } else {
-    tourListArr = tours.map( (tour, i) => {
+    tourListArr = toursList.map( (tour, i) => {
       return <TourCardContainer  handleResetMap={ handleResetMap }
                         tourData={ tour }
                         key={ i }/>

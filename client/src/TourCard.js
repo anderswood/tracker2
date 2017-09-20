@@ -1,50 +1,30 @@
-/*global google*/
 
 import React from 'react';
 
-import { polygonParams, polylineParams } from './mapProps';
+import { loadOverlays, clearOverlays } from './helper';
 
 const TourCard = ({
   tourData,
   handleResetMap,
   handleActivateTour,
   handleDeactivateTour,
-  tourList
+  tours
 }) => {
-
-  const loadOverlays = (mapObj) => {
-    tourData.overlays.forEach( path => {
-      let overlay;
-
-      if (path.overlayType === 'polygon') {
-        const polygonParameters = polygonParams(path.overlayCoords);
-
-        overlay = new google.maps.Polygon(polygonParameters);
-      } else if (path.overlayType === 'polyline') {
-        const polylineParameters = polylineParams(path.overlayCoords);
-
-        overlay = new google.maps.Polyline(polylineParameters);
-      }
-
-      overlay.id = path.overlayId;
-      overlay.type = path.overlayType;
-      overlay.setMap(mapObj);
-    });
-  }
 
   const clickCard = () => {
     let mapObj = handleResetMap();
+    // clearOverlays(mapObj, tourData.overlays);
 
-    if (tourList.activeTour !== tourData.tourId) {
+    if (tours.activeTour !== tourData.tourId) {
       handleActivateTour(tourData.tourId);
-      loadOverlays(mapObj);
+      loadOverlays(mapObj, tourData.overlays);
     } else {
       handleDeactivateTour();
     }
   }
 
   const getClass = () => {
-    return tourList.activeTour === tourData.tourId ? 'card active-card' : 'card';
+    return tours.activeTour === tourData.tourId ? 'card active-card' : 'card';
   }
 
   return (

@@ -5,7 +5,7 @@ import TourCard from '../TourCard';
 
 const mapStateToProps = (state) => {
   return {
-    tourList: state.tours
+    tours: state.tours
   }
 }
 
