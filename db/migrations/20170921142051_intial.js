@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.integer('submitter_id').unsigned();
       table.foreign('submitter_id').references('submitters.id');
-      table.integer('tour_app_id');
+      table.bigInteger('tour_app_id');
       table.integer('overlay_qty');
       table.string('tour_name');
       table.string('tour_last_visited');
@@ -23,7 +23,7 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.integer('tour_id').unsigned();
       table.foreign('tour_id').references('tours.id');
-      table.integer('overlay_app_id');
+      table.bigInteger('overlay_app_id');
       table.string('overlay_type');
     }),
     knex.schema.createTable('coordinates', table => {
@@ -35,6 +35,7 @@ exports.up = function(knex, Promise) {
     }),
   ]);
 };
+
 
 exports.down = function(knex, Promise) {
   return Promise.all([
