@@ -6,6 +6,7 @@ import { drawingMgrProps, initMapOptions } from './mapProps';
 import { createOverlay } from './helper';
 import NewTour from './NewTour';
 import TourListContainer from './containers/TourListContainer';
+import SubmitToursBtn from './SubmitToursBtn';
 
 
 class MapTile extends Component {
@@ -73,7 +74,7 @@ class MapTile extends Component {
         <div className='GMap-canvas' ref="mapCanvas"></div>
         <NewTour handleResetMap={ this.resetMap.bind(this) } />
         <TourListContainer  handleResetMap={ this.resetMap.bind(this) }/>
-        {/* <SubmitToursBtn /> */}
+        <SubmitToursBtn />
       </section>
     )
   }

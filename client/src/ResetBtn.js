@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ResetBtn = (props) => {
+const ResetBtn = ({handleResetMap, handleClearState}) => {
 
   const handleReset = () => {
-    props.handleResetMap()
-    props.handleClearState()
+    handleResetMap()
+    handleClearState()
   }
 
   return (
