@@ -13,6 +13,14 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
+app.get('api/v1/submitters', (req, res) => {
+  database('submitters').select()
+  .then( submitters => {
+    console.log(submitters);
+  })
+  .catch( error => res.status(500).json({ error }));
+})
+
 // app.post('/api/weather', (req, res) => {
 //   // const { lat, long } = req.body;
 //   const mapsKey = process.env.mapKey;
