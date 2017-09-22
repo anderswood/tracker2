@@ -30,9 +30,9 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.integer('overlay_id').unsigned();
       table.foreign('overlay_id').references('overlays.id');
-      table.decimal('coordinates_lat', 15);
-      table.decimal('coordinates_lng', 15);
-    }),
+      table.string('coordinates_lat');
+      table.string('coordinates_lng');
+    }), 
   ]);
 };
 

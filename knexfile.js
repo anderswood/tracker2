@@ -12,7 +12,7 @@ module.exports = {
     connection: process.env.DATABASE_URL || 'postgres://localhost/tourtracker_test',
     useNullAsDefault: true,
     migrations: { directory: './db/migrations' },
-    seeds: { directory: './db/migrations' }
+    seeds: { directory: './db/seeds/test' }
   },
   production: {
     client: 'pg',
